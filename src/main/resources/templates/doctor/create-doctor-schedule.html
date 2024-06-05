@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Doctor Schedule</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .form-control {
+            border-radius: 4px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Create Doctor Schedule</h1>
+    <form th:action="@{/doctor-schedule/create}" method="post" th:object="${doctorSchedule}">
+        <div class="mb-3">
+            <label for="appointmentDate" class="form-label">Appointment Date</label>
+            <input type="date" class="form-control" id="appointmentDate" th:field="*{appointmentDate}">
+        </div>
+        <div class="mb-3">
+            <label for="timeSlot" class="form-label">Time Slot</label>
+            <input type="text" class="form-control" id="timeSlot" th:field="*{timeSlot}">
+        </div>
+        <button type="submit" class="btn btn-primary">Create Schedule</button>
+    </form>
+</div>
+
+</body>
+</html>

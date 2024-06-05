@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Doctor Schedule</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            margin-top: 50px;
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+        .form-label {
+            font-weight: bold;
+        }
+        .form-control, .form-select {
+            border-radius: 4px;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+        .return-link {
+            margin-top: 20px;
+            display: block;
+            text-align: center;
+            font-size: 18px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Create Doctor Schedule</h1>
+    <form action="#" th:action="@{/admin/newSchedule}" th:object="${doctorScheduleDto}" method="post">
+        <div class="mb-3">
+            <label for="doctor" class="form-label">Doctor:</label>
+            <select id="doctor" name="doctorId" class="form-select" th:field="*{doctorId}">
+                <option th:each="doctor : ${doctors}" th:value="${doctor.id}" th:text="${doctor.name}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="dayOfWeek" class="form-label">Day of Week:</label>
+            <select id="dayOfWeek" name="dayOfWeek" class="form-select" th:field="*{dayOfWeek}">
+                <option value="MONDAY">Monday</option>
+                <option value="TUESDAY">Tuesday</option>
+                <option value="WEDNESDAY">Wednesday</option>
+                <option value="THURSDAY">Thursday</option>
+                <option value="FRIDAY">Friday</option>
+                <option value="SATURDAY">Saturday</option>
+                <option value="SUNDAY">Sunday</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="startTime" class="form-label">Start Time:</label>
+            <input type="time" id="startTime" name="startTime" class="form-control" th:field="*{startTime}" />
+        </div>
+        <div class="mb-3">
+            <label for="endTime" class="form-label">End Time:</label>
+            <input type="time" id="endTime" name="endTime" class="form-control" th:field="*{endTime}" />
+        </div>
+        <button type="submit" class="btn btn-primary">Create Schedule</button>
+    </form>
+    <a href="/admin/" class="return-link">Return to HomePage</a>
+</div>
+
+</body>
+</html>

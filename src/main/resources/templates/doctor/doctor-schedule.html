@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Doctor Schedule</title>
+    <!-- Add your CSS links here -->
+</head>
+<body>
+<div class="container">
+    <h1>Doctor Schedule</h1>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Day</th>
+            <th>Time</th>
+            <th>Appointment</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterate over each appointment in the doctor schedule -->
+        <tr th:each="appointment : ${doctorSchedule.appointments}">
+            <td th:text="${appointment.day}"></td>
+            <td th:text="${appointment.time}"></td>
+            <td th:text="${appointment.appointmentDescription}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
